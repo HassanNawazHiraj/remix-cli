@@ -2,26 +2,27 @@
 
 ## Setup Script
 
-This bash script automates the initial setup of a Linux system, focusing on user management, firewall configuration, and optional SSH key addition. It is designed to simplify the setup process for new systems or users.
+This bash script automates the initial setup of a Ubuntu 22.04 system, focusing on LEMP stack setup with nodejs scripts coming soon.
 
 ### Usage
 
 1. **Clone the repository or download the script directly:**
 
    ```bash
-   git clone https://github.com/HassanNawazHiraj/server-setup-automation.git
+   git clone https://github.com/HassanNawazHiraj/server-setup-automation.git cli
    ```
+   better to run this at a folder where you can go back to run individual scripts
 
 2. **Navigate to the script directory:**
 
    ```bash
-   cd server-setup-automation
+   cd cli
    ```
 
 3. **Make the script executable:**
 
    ```bash
-   chmod +x setup.sh
+   chmod +x *.sh
    ```
 
 4. **Run the script:**
@@ -52,11 +53,14 @@ This bash script automates the initial setup of a Linux system, focusing on user
    - If yes, allows the user to paste an SSH key and confirms its addition to the authorized_keys file.
    - Supports adding multiple SSH keys in one session.
 
-### Notes
-
-- It's recommended to review and customize the script according to your specific needs before running it.
-- Ensure that the script has execution permissions before running it.
-
-  ```bash
-  chmod +x setup.sh
-  ```
+5. **LEMP setup (Optional):**
+   - Asks the user if they want to setup LEMP
+   - installs nginx
+   - asks user if they want to open http or both http+https port 
+   - installs mysql
+   - runs mysql security script
+   - asks user which php version to install
+   - asks user if they want to modify default nginx config to allow php, clear /var/www/html and add index.php which prints phpinfo
+   - restarts nginx
+6. **Setup finished:**
+   - prints server ip 
