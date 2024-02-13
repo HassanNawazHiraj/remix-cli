@@ -18,11 +18,11 @@ if [ -z "$php_version" ]; then
 fi
 
 # Ask the user for the site name
-echo -e "Enter the nginx site name. \nThis will create folder here : /var/www/site_name. \nBest practice to keep it same as domain\n"
+echo -e "\n\nEnter the nginx site name. \nThis will create folder in /var/www/site_name. \nBest practice to keep it same as domain\n"
 read -p "Enter site name: " site_name
 
 # Ask the user for the server name
-echo -e "Enter the nginx server name. \nThis will be the domain name(s) that will point to this site. \nYou can enter multiple domains separated by space. \nBest practice to keep it same as site name\n"
+echo -e "\n\nEnter the nginx server name. \nThis will be the domain name(s) that will point to this site. \nYou can enter multiple domains separated by space. \nBest practice to keep it same as site name\n"
 read -p "Enter server name (leave empty to use site name '$site_name'): " server_name
 
 # If server_name is empty, set it to the same value as site_name
@@ -31,6 +31,7 @@ if [ -z "$server_name" ]; then
 fi
 
 # Ask the user if they want to enable SSL
+echo -e "\n"
 read -p "Do you want to enable SSL (listen to 443 port)? (Y/n): " enable_ssl
 enable_ssl=${enable_ssl:-y}
 
@@ -70,7 +71,7 @@ if [ ! -d "/var/www/$site_name" ]; then
 fi
 sudo cp ./templates/new_php_site.php /var/www/$site_name/index.php
 
-echo "\n\nNginx site for $site_name has been created and enabled."
+echo -e "\n\nNginx site for $site_name has been created and enabled."
 first_domain=$(echo "$server_name" | cut -d' ' -f1)
 if [ "$enable_ssl" = "y" ]; then
     echo "You can access it at https://$first_domain"
