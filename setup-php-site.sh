@@ -6,10 +6,15 @@ ls /etc/php | grep -E '^[0-9]'
 read -p "Enter the PHP version you want to install (e.g., 8.1): " php_version
 
 # Ask the user for the site name
-read -p "Enter the site name (/var/www/site_name) i.e, 'test.byteremix.com' : " site_name
+read -p "Enter the nginx site name. This will create folder here : /var/www/site_name. Best practice to keep it same as domain : " site_name
 
 # Ask the user for the server name
-read -p "Enter the server name (domains separated by space) i.e, 'byteremix.com www.byteremix.com': " server_name
+read -p "Enter the nginx server name (domains separated by space) i.e, 'byteremix.com www.byteremix.com' (leave empty to use site name '$site_name'): " server_name
+
+# If server_name is empty, set it to the same value as site_name
+if [ -z "$server_name" ]; then
+    server_name="$site_name"
+fi
 
 # Ask the user if they want to enable SSL
 read -p "Do you want to enable SSL (listen to 443 port)? (y/n): " enable_ssl
