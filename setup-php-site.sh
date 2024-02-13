@@ -55,22 +55,26 @@ if [ ! -e /etc/nginx/sites-enabled/$site_name ]; then
     sudo ln -s /etc/nginx/sites-available/$site_name /etc/nginx/sites-enabled/
 fi
 
+# Restart Nginx
+sudo systemctl restart nginx
+
 # If the user wants to enable SSL, we will issue a cert using certbot
 if [ "$enable_ssl" = "y" ]; then
     # Install Certbot
-    sudo apt-get install certbot -y
-
+    sudo snap install --classic certbot
+    
+    # Create a symbolic link
+    if [ ! -e /usr/bin/certbot ]; then
+        sudo ln -s /snap/bin/certbot /usr/bin/certbot
+    fi
+    
     # Obtain SSL certificate
-    sudo certbot certonly --nginx -d $server_name
-
-    # Configure SSL in Nginx site configuration
-    # sudo sed -i "s/#ssl_certificate/ssl_certificate/g" /etc/nginx/sites-available/$site_name
-    # sudo sed -i "s/#ssl_certificate_key/ssl_certificate_key/g" /etc/nginx/sites-available/$site_name
-
+    sudo certbot certonly --nginx -d $(echo $server_name | sed 's/ / -d /g')
+    
+    # Restart Nginx
+    sudo systemctl restart nginx
+    
 fi
-
-# Restart Nginx
-sudo systemctl restart nginx
 
 # add a placeholder php file to the site
 if [ ! -d "/var/www/$site_name" ]; then
@@ -79,9 +83,14 @@ fi
 sudo cp ./templates/new_php_site.php /var/www/$site_name/index.php
 
 echo -e "\n\nNginx site for $site_name has been created and enabled."
-first_domain=$(echo "$server_name" | cut -d' ' -f1)
 if [ "$enable_ssl" = "y" ]; then
-    echo "You can access it at https://$first_domain"
+    echo "You can access it at:"
+    for domain in $server_name; do
+        echo "https://$domain"
+    done
 else
-    echo "You can access it at http://$first_domain"
+    echo "You can access it at:"
+    for domain in $server_name; do
+        echo "http://$domain"
+    done
 fi
