@@ -64,11 +64,9 @@ if [ "$enable_ssl" = "y" ]; then
     sudo certbot certonly --nginx -d $server_name
 
     # Configure SSL in Nginx site configuration
-    sudo sed -i "s/#ssl_certificate/ssl_certificate/g" /etc/nginx/sites-available/$site_name
-    sudo sed -i "s/#ssl_certificate_key/ssl_certificate_key/g" /etc/nginx/sites-available/$site_name
+    # sudo sed -i "s/#ssl_certificate/ssl_certificate/g" /etc/nginx/sites-available/$site_name
+    # sudo sed -i "s/#ssl_certificate_key/ssl_certificate_key/g" /etc/nginx/sites-available/$site_name
 
-    # Restart Nginx to apply the changes
-    sudo systemctl restart nginx
 fi
 
 # Restart Nginx
