@@ -21,7 +21,7 @@ done
 
 
 # Ask user if they want to configure Nginx to use PHP
-read -p "Do you want to configure Nginx to use PHP? (y/n): " configure_php
+read -p "Do you want to configure Nginx to use PHP? This will reset /var/www/html folder and create a index.php file that nginx will serve (y/n): " configure_php
 
 if [ "$configure_php" = "y" ]; then
     # Replace the placeholder with the actual PHP version
