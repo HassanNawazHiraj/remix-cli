@@ -5,17 +5,10 @@ if [ ! -d "/etc/php" ] || [ -z "$(ls -A /etc/php)" ]; then
     exit 1
 fi
 
-# ask user to enter php version to use
-echo "Following are php versions installed on your server:"
-ls /etc/php | grep -E '^[0-9]'
-echo -e "\n"
-php_version=$(ls /etc/php | grep -E '^[0-9]' | head -1)
-read -p "Enter the PHP version you want to use (leave empty to use $php_version): " php_version
+source functions.sh
 
-# If php_version is empty, set it to the first directory in /etc/php
-if [ -z "$php_version" ]; then
-    php_version=$(ls /etc/php | grep -E '^[0-9]' | head -1)
-fi
+# ask user to enter php version to use
+php_version=$(select_php_version)
 
 # Ask the user for the site name
 echo -e "\n\nEnter the nginx site name. \nThis will create folder in /var/www/site_name. \nBest practice to keep it same as domain\n"

@@ -4,19 +4,20 @@ while [ "$confirm_php_version" = "n" ]; do
     read -p "Enter the PHP version you want to install (e.g., 8.1): " php_version
     
     # Verify PHP version with the user
-    read -p "You have selected PHP version $php_version. This will install the package php${php_version}-fpm and php-mysql. Are you sure? (y/n/skip): " confirm_php_version
+    read -p "You have selected PHP version $php_version. This will install the package php${php_version}-fpm, php${php_version}-cli php-mysql. Are you sure? (y/n/skip): " confirm_php_version
     
     if [ "$confirm_php_version" = "y" ]; then
         sudo add-apt-repository ppa:ondrej/php
         sudo apt update -y
         sudo apt upgrade -y
         # Install PHP
-        sudo apt install php${php_version}-fpm php-mysql -y
+        sudo apt install php${php_version}-fpm php${php_version}-cli php-mysql -y
         echo "PHP $php_version and php-mysql package will be installed."
     fi
     
 done
 
+sudo update-alternatives --set php /usr/bin/php${php_version}
 
 
 
