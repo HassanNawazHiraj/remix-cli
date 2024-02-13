@@ -4,6 +4,21 @@
 
 This bash script automates the initial setup of a Ubuntu 22.04 system, focusing on LEMP stack setup with nodejs scripts coming soon.
 
+You should be able to create static html & php website with ssl.
+
+## Requirements
+
+- Ubuntu 22.04
+- 1gb ram (512mb fails the script)
+- At least 5gb available space
+
+## Guides
+This script follows the following guides. 
+https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-22-04
+
+Cert bot is used to generate Lets encrypt SSLs
+
 ### Usage
 
 1. **Clone the repository or download the script directly:**

@@ -32,7 +32,7 @@ fi
 
 # Ask the user if they want to enable SSL
 echo -e "\n"
-read -p "Do you want to enable SSL (listen to 443 port)? (Y/n): " enable_ssl
+read -p "Do you want to enable SSL (Lets Encrypt)? (Y/n): " enable_ssl
 enable_ssl=${enable_ssl:-y}
 
 # remove default nginx site
@@ -94,3 +94,5 @@ else
         echo "http://$domain"
     done
 fi
+
+echo "Place your files in /var/www/$site_name."
