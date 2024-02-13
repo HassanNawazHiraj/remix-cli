@@ -1,15 +1,29 @@
 #!/bin/bash
+# Check if the /etc/php directory exists and is not empty
+if [ ! -d "/etc/php" ] || [ -z "$(ls -A /etc/php)" ]; then
+    echo "The /etc/php directory doesn't exist or is empty. Please install PHP before running this script."
+    exit 1
+fi
 
 # ask user to enter php version to use
 echo "Following are php versions installed on your server:"
 ls /etc/php | grep -E '^[0-9]'
-read -p "Enter the PHP version you want to use (e.g., 8.1): " php_version
+echo -e "\n"
+php_version=$(ls /etc/php | grep -E '^[0-9]' | head -1)
+read -p "Enter the PHP version you want to use (leave empty to use $php_version): " php_version
+
+# If php_version is empty, set it to the first directory in /etc/php
+if [ -z "$php_version" ]; then
+    php_version=$(ls /etc/php | grep -E '^[0-9]' | head -1)
+fi
 
 # Ask the user for the site name
-read -p "Enter the nginx site name. This will create folder here : /var/www/site_name. Best practice to keep it same as domain : \n" site_name
+echo -e "Enter the nginx site name. \nThis will create folder here : /var/www/site_name. \nBest practice to keep it same as domain\n"
+read -p "Enter site name: " site_name
 
 # Ask the user for the server name
-read -p "Enter the nginx server name (domains separated by space) i.e, 'byteremix.com www.byteremix.com' (leave empty to use site name '$site_name'): \n" server_name
+echo -e "Enter the nginx server name. \nThis will be the domain name(s) that will point to this site. \nYou can enter multiple domains separated by space. \nBest practice to keep it same as site name\n"
+read -p "Enter server name (leave empty to use site name '$site_name'): " server_name
 
 # If server_name is empty, set it to the same value as site_name
 if [ -z "$server_name" ]; then
