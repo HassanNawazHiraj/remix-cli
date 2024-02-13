@@ -35,13 +35,6 @@ echo -e "\n"
 read -p "Do you want to enable SSL (listen to 443 port)? (Y/n): " enable_ssl
 enable_ssl=${enable_ssl:-y}
 
-# If the user wants to enable SSL, remove the comment from the SSL configuration lines
-if [ "$enable_ssl" = "y" ]; then
-    ssl_comment=""
-else
-    ssl_comment="#"
-fi
-
 # remove default nginx site
 if [ -f /etc/nginx/sites-available/default ]; then
     sudo rm /etc/nginx/sites-available/default
@@ -52,7 +45,7 @@ if [ -f /etc/nginx/sites-enabled/default ]; then
 fi
 
 # Replace the placeholders with the actual values
-sed "s/{{SITE_NAME}}/$site_name/g; s/{{SERVER_NAME}}/$server_name/g; s/{{PHP_VERSION}}/$php_version/g; s/{{SSL_COMMENT}}/$ssl_comment/g" ./templates/nginx_new_php_site > $site_name
+sed "s/{{SITE_NAME}}/$site_name/g; s/{{SERVER_NAME}}/$server_name/g; s/{{PHP_VERSION}}/$php_version/g" ./templates/nginx_new_php_site > $site_name
 
 # Move the generated file to the sites-available directory
 sudo mv $site_name /etc/nginx/sites-available/
@@ -60,6 +53,22 @@ sudo mv $site_name /etc/nginx/sites-available/
 # Enable the site
 if [ ! -e /etc/nginx/sites-enabled/$site_name ]; then
     sudo ln -s /etc/nginx/sites-available/$site_name /etc/nginx/sites-enabled/
+fi
+
+# If the user wants to enable SSL, we will issue a cert using certbot
+if [ "$enable_ssl" = "y" ]; then
+    # Install Certbot
+    sudo apt-get install certbot -y
+
+    # Obtain SSL certificate
+    sudo certbot certonly --nginx -d $server_name
+
+    # Configure SSL in Nginx site configuration
+    sudo sed -i "s/#ssl_certificate/ssl_certificate/g" /etc/nginx/sites-available/$site_name
+    sudo sed -i "s/#ssl_certificate_key/ssl_certificate_key/g" /etc/nginx/sites-available/$site_name
+
+    # Restart Nginx to apply the changes
+    sudo systemctl restart nginx
 fi
 
 # Restart Nginx

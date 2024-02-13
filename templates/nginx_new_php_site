@@ -4,8 +4,8 @@ server {
 
         # SSL configuration
         #
-        {{SSL_COMMENT}} listen 443 ssl default_server;
-        {{SSL_COMMENT}} listen [::]:443 ssl default_server;
+        # listen 443 ssl default_server;
+        # listen [::]:443 ssl default_server;
 
         root /var/www/{{SITE_NAME}};
 
