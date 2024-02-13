@@ -27,8 +27,13 @@ else
 fi
 
 # remove default nginx site
-sudo rm /etc/nginx/sites-available/default
-sudo rm /etc/nginx/sites-enabled/default
+if [ -f /etc/nginx/sites-available/default ]; then
+    sudo rm /etc/nginx/sites-available/default
+fi
+
+if [ -f /etc/nginx/sites-enabled/default ]; then
+    sudo rm /etc/nginx/sites-enabled/default
+fi
 
 # Replace the placeholders with the actual values
 sed "s/{{SITE_NAME}}/$site_name/g; s/{{SERVER_NAME}}/$server_name/g; s/{{PHP_VERSION}}/$php_version/g; s/{{SSL_COMMENT}}/$ssl_comment/g" ./templates/nginx_new_php_site > $site_name
