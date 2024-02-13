@@ -6,10 +6,10 @@ ls /etc/php | grep -E '^[0-9]'
 read -p "Enter the PHP version you want to install (e.g., 8.1): " php_version
 
 # Ask the user for the site name
-read -p "Enter the site name (/var/www/site_name) i.e, 'test.bytenest.com' : " site_name
+read -p "Enter the site name (/var/www/site_name) i.e, 'test.byteremix.com' : " site_name
 
 # Ask the user for the server name
-read -p "Enter the server name (domains separated by space) i.e, 'bytenest.com www.bytenest.com': " server_name
+read -p "Enter the server name (domains separated by space) i.e, 'byteremix.com www.byteremix.com': " server_name
 
 # Ask the user if they want to enable SSL
 read -p "Do you want to enable SSL (listen to 443 port)? (y/n): " enable_ssl
@@ -20,6 +20,9 @@ if [ "$enable_ssl" = "y" ]; then
 else
     ssl_comment="#"
 fi
+
+# remove default nginx site
+sudo rm /etc/nginx/sites-available/default
 
 # Replace the placeholders with the actual values
 sed "s/{{SITE_NAME}}/$site_name/g; s/{{SERVER_NAME}}/$server_name/g; s/{{PHP_VERSION}}/$php_version/g; s/{{SSL_COMMENT}}/$ssl_comment/g" ./templates/nginx_new_php_site > $site_name
