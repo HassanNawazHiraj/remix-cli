@@ -69,7 +69,7 @@ if [ "$enable_ssl" = "y" ]; then
     fi
     
     # Obtain SSL certificate
-    sudo certbot certonly --nginx -d $(echo $server_name | sed 's/ / -d /g')
+    sudo certbot --nginx -d $(echo $server_name | sed 's/ / -d /g')
     
     # Restart Nginx
     sudo systemctl restart nginx
