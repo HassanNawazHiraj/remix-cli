@@ -9,6 +9,9 @@ if [ "$setup_lemp" = "y" ]; then
     
     # Install PHP
     ./install-php.sh
+
+    # install composer
+    ./install-composer.sh
     
     echo "LEMP stack setup complete. Recommended to reboot the server."
 fi

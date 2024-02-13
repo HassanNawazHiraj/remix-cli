@@ -10,7 +10,7 @@ fi
 
 # ask user to enter php version to use
 read -p "Do you want to change the PHP version? (y/N): " change_version
-$changeVersion=${change_version:-n}
+changeVersion=${change_version:-n}
 
 if [ "$change_version" == "y" ]; then
     # Add code here to handle changing PHP version
