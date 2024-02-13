@@ -33,4 +33,7 @@ sudo ln -s /etc/nginx/sites-available/$site_name /etc/nginx/sites-enabled/
 # Restart Nginx
 sudo systemctl restart nginx
 
+# add a placeholder php file to the site
+sudo cp ./templates/new_php_site.php /var/www/$site_name/index.php
+
 echo "Nginx site for $site_name has been created and enabled."
