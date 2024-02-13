@@ -42,12 +42,17 @@ sed "s/{{SITE_NAME}}/$site_name/g; s/{{SERVER_NAME}}/$server_name/g; s/{{PHP_VER
 sudo mv $site_name /etc/nginx/sites-available/
 
 # Enable the site
-sudo ln -s /etc/nginx/sites-available/$site_name /etc/nginx/sites-enabled/
+if [ ! -e /etc/nginx/sites-enabled/$site_name ]; then
+    sudo ln -s /etc/nginx/sites-available/$site_name /etc/nginx/sites-enabled/
+fi
 
 # Restart Nginx
 sudo systemctl restart nginx
 
 # add a placeholder php file to the site
+if [ ! -d "/var/www/$site_name" ]; then
+    sudo mkdir -p "/var/www/$site_name"
+fi
 sudo cp ./templates/new_php_site.php /var/www/$site_name/index.php
 
 echo "Nginx site for $site_name has been created and enabled."
