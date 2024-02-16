@@ -10,3 +10,5 @@ git reset --hard origin/master
 
 # Make the script executable
 chmod +x *.sh
+
+echo -e "\n\n CLI updated."
