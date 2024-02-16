@@ -1,8 +1,8 @@
 # Function to ask user to enter PHP version to use
 function select_php_version {
-    echo "Following are PHP versions installed on your server:"
-    ls /etc/php | grep -E '^[0-9]'
-    echo -e "\n"
+    echo "Following are PHP versions installed on your server:" >&2
+    ls /etc/php | grep -E '^[0-9]' >&2
+    echo -e "\n" >&2
     local php_version=$(ls /etc/php | grep -E '^[0-9]' | head -1)
     read -p "Enter the PHP version you want to use (leave empty to use $php_version): " php_version
 
