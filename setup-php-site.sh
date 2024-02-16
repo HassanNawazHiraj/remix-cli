@@ -31,10 +31,6 @@ read -p "Do you want to enable SSL (Lets Encrypt)? (Y/n): " enable_ssl
 enable_ssl=${enable_ssl:-y}
 
 # remove default nginx site
-if [ -f /etc/nginx/sites-available/default ]; then
-    sudo rm /etc/nginx/sites-available/default
-fi
-
 if [ -f /etc/nginx/sites-enabled/default ]; then
     sudo rm /etc/nginx/sites-enabled/default
 fi
