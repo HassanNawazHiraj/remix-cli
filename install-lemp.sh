@@ -16,5 +16,5 @@ if [ "$setup_lemp" = "y" ]; then
     # install composer
     bash "${DIR}/install-composer.sh"
     
-    echo "LEMP stack setup complete. Recommended to reboot the server."
+    echo "LEMP stack setup complete."
 fi

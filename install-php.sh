@@ -46,7 +46,7 @@ if [ "$configure_php" = "y" ]; then
     sudo rm -rf /var/www/html/*
     
     # create a new index.php file from /templates/index.php
-    cp ${DIR}/templates/index.php /var/www/html/index.php
+    sudo cp ${DIR}/templates/index.php /var/www/html/index.php
     
     # Restart Nginx
     sudo systemctl restart nginx
