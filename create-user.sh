@@ -22,4 +22,6 @@ else
     
     # Now we will copy the public key to the new user's home directory using rsync
     rsync --archive --chown="$username":"$username" ~/.ssh /home/"$username"
+    
+    echo "User '$username' has been set up. You should be able to login using your SSH key (same as root)."
 fi
