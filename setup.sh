@@ -6,7 +6,8 @@ echo "Starting setup..."
 sudo apt update && sudo apt upgrade -y
 
 # Ask user if they want to set up SSH and add it to the firewall
-read -p "Do you want to setup firewall (ufw) and only allow ssh port (22)? (recommended) (y/n): " setup_ssh
+read -p "Do you want to setup firewall (ufw) and only allow ssh port (22)? (recommended) (Y/n): " setup_ssh
+setup_ssh=${setup_ssh:-y}
 
 if [[ $setup_ssh == "y" ]]; then
     # setup ssh
