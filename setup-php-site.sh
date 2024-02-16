@@ -7,7 +7,7 @@ if [ ! -d "/etc/php" ] || [ -z "$(ls -A /etc/php)" ]; then
     exit 1
 fi
 
-source functions.sh
+source ${DIR}/functions.sh
 
 # ask user to enter php version to use
 php_version=$(select_php_version)

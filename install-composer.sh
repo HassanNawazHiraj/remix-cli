@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source functions.sh
+# source functions.sh
 
 # Check if the /etc/php directory exists and is not empty
 if [ ! -d "/etc/php" ] || [ -z "$(ls -A /etc/php)" ]; then

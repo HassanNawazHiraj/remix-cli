@@ -1,5 +1,7 @@
 # enter php version
-source functions.sh
+DIR="$(dirname "$0")"
+
+source ${DIR}/functions.sh
 
 php_version=$(select_php_version)
 
