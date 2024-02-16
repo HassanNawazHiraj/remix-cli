@@ -1,4 +1,4 @@
-# Linux Server Setup Script
+# ByteRemix RemixCLI
 
 ## Warning!
 Current script is in development. It contains errors. Please wait until its complete before using or help in contribution.
