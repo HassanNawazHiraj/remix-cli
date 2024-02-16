@@ -2,6 +2,9 @@
 
 echo "Updating CLI..."
 
+# Change to the directory of the script
+cd "$(dirname "$0")"
+
 # Fetch the remote repository
 git fetch > /dev/null 2>&1
 
