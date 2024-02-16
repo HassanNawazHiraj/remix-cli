@@ -22,63 +22,7 @@ https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysq
 
 Cert bot is used to generate Lets encrypt SSLs
 
-### Usage
+> Refer to wiki to know how to use this cli tool
 
-1. **Clone the repository or download the script directly:**
-
-   ```bash
-   git clone https://github.com/HassanNawazHiraj/server-setup-automation.git cli
-   ```
-   better to run this at a folder where you can go back to run individual scripts
-
-2. **Navigate to the script directory:**
-
-   ```bash
-   cd cli
-   ```
-
-3. **Make the script executable:**
-
-   ```bash
-   chmod +x *.sh
-   ```
-
-4. **Run the script:**
-
-   ```bash
-   ./setup.sh
-   ```
-
-### Script Overview
-
-1. **Update and Upgrade:**
-
-   - Updates the package list and upgrades existing packages.
-
-2. **Create User:**
-
-   - Prompts the user for a username (default is 'ubuntu').
-   - Checks if the user already exists.
-   - Adds the user and assigns them to the sudo group if not already present.
-
-3. **Firewall Configuration:**
-
-   - Installs and configures Uncomplicated Firewall (ufw).
-   - Allows OpenSSH connections.
-
-4. **Add SSH Key (Optional):**
-   - Asks the user if they want to add a public SSH key.
-   - If yes, allows the user to paste an SSH key and confirms its addition to the authorized_keys file.
-   - Supports adding multiple SSH keys in one session.
-
-5. **LEMP setup (Optional):**
-   - Asks the user if they want to setup LEMP
-   - installs nginx
-   - asks user if they want to open http or both http+https port 
-   - installs mysql
-   - runs mysql security script
-   - asks user which php version to install
-   - asks user if they want to modify default nginx config to allow php, clear /var/www/html and add index.php which prints phpinfo
-   - restarts nginx
-6. **Setup finished:**
-   - prints server ip 
+# About this CLI
+I made this cli to make setting up server easier. This cli is combination of bash script which makes it easy to read and understand whats going on. This makes modifying the cli for your own preference easy.
