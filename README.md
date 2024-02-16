@@ -1,5 +1,8 @@
 # Linux Server Setup Script
 
+## Warning!
+Current script is in development. It contains errors. Please wait until its complete before using or help in contribution.
+
 ## Setup Script
 
 This bash script automates the initial setup of a Ubuntu 22.04 system, focusing on LEMP stack setup with nodejs scripts coming soon.
