@@ -87,3 +87,6 @@ else
 fi
 
 echo "Place your files in /var/www/$site_name."
+
+# export the site name
+export site_name

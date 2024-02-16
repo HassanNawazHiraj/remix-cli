@@ -39,10 +39,9 @@ done
 
 echo -e "\n\n Please follow the following prompts to create a php website. Then we will continue with laravel setup.\n"
 
-${DIR}/setup-php-site.sh
+source "${DIR}/setup-php-site.sh"
 
 echo -e "\n\n Now continuing with laravel setup.\n"
 
 # clone the repository into /var/www/$site_name
-cd /var/www
-sudo git clone $git_repo $site_name
+sudo git clone $git_repo /var/www/$site_name
