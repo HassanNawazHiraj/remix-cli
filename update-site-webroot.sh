@@ -29,4 +29,4 @@ if [ "$continue_script" != "y" ]; then
 fi
 
 # replace the webroot path in the nginx config
-sed -i "s#root /var/www/$project_name;#root /var/www/$site_name$webroot_path;#" /etc/nginx/sites-available/$project_name
+sudo sed -i "s#root /var/www/[^;]*;#root /var/www/$site_name$webroot_path;#" /etc/nginx/sites-available/$project_name
