@@ -8,14 +8,14 @@ while [ "$confirm_php_version" = "n" ]; do
     # Verify PHP version with the user
     read -p "You have selected PHP version $php_version. This will install the package php${php_version}-fpm, php${php_version}-cli php-mysql. Are you sure? (Y/n/skip): " confirm_php_version
     configm_php_version=${confirm_php_version:-y}
-    
+
     if [ "$confirm_php_version" = "y" ]; then
         sudo add-apt-repository ppa:ondrej/php
         sudo apt update -y
         sudo apt upgrade -y
         # Install PHP
         sudo apt install php${php_version}-fpm php${php_version}-cli php-mysql -y
-        echo "PHP $php_version and php-mysql package will be installed."
+        echo "PHP $php_version and php-mysql package has been installed."
     fi
     
 done
