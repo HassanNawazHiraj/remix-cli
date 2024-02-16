@@ -1,3 +1,5 @@
+DIR="$(dirname "$0")"
+
 # Install ufw if not already installed
 sudo apt install ufw -y
 
@@ -8,4 +10,4 @@ sudo ufw allow OpenSSH
 sudo ufw enable
 
 # Ask user if they want to add a public SSH key
-./add-ssh-key.sh
+${DIR}/add-ssh-key.sh

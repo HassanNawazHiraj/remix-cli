@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DIR="$(dirname "$0")"
+
 # Default file name
 filename="remix"
 
@@ -8,11 +10,11 @@ read -p "Enter cli keyword to use (default: $filename): " input_filename
 
 # Use default file name if user input is empty
 if [[ -z $input_filename ]]; then
-  input_filename=$filename
+    input_filename=$filename
 fi
 
 # Replace {{SCRIPT_PATH}} with the actual script path
-sed "s#{{SCRIPT_PATH}}#$(pwd)#g" ./templates/remix > "$input_filename"
+sed "s#{{SCRIPT_PATH}}#$(pwd)#g" ${DIR}/templates/remix > "$input_filename"
 
 # Make the file executable
 chmod +x "$input_filename"

@@ -1,4 +1,6 @@
 #!/bin/bash
+DIR="$(dirname "$0")"
+
 # Check if the /etc/php directory exists and is not empty
 if [ ! -d "/etc/php" ] || [ -z "$(ls -A /etc/php)" ]; then
     echo "The /etc/php directory doesn't exist or is empty. Please install PHP before running this script."
@@ -38,7 +40,7 @@ if [ -f /etc/nginx/sites-enabled/default ]; then
 fi
 
 # Replace the placeholders with the actual values
-sed "s/{{SITE_NAME}}/$site_name/g; s/{{SERVER_NAME}}/$server_name/g; s/{{PHP_VERSION}}/$php_version/g" ./templates/nginx_new_php_site > $site_name
+sed "s/{{SITE_NAME}}/$site_name/g; s/{{SERVER_NAME}}/$server_name/g; s/{{PHP_VERSION}}/$php_version/g" ${DIR}/templates/nginx_new_php_site > $site_name
 
 # Move the generated file to the sites-available directory
 sudo mv $site_name /etc/nginx/sites-available/
@@ -73,7 +75,7 @@ fi
 if [ ! -d "/var/www/$site_name" ]; then
     sudo mkdir -p "/var/www/$site_name"
 fi
-sudo cp ./templates/new_php_site.php /var/www/$site_name/index.php
+sudo cp ${DIR}/templates/new_php_site.php /var/www/$site_name/index.php
 
 echo -e "\n\nNginx site for $site_name has been created and enabled."
 if [ "$enable_ssl" = "y" ]; then

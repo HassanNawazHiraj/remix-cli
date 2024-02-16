@@ -1,4 +1,5 @@
 #!/bin/bash
+DIR="$(dirname "$0")"
 
 # Check if the /etc/php directory exists and is not empty
 if [ ! -d "/etc/php" ] || [ -z "$(ls -A /etc/php)" ]; then
@@ -21,7 +22,7 @@ generate_ssh=${generate_ssh:-y}
 
 if [ "$generate_ssh" = "y" ]; then
     # generate ssh key
-    ./generate-ssh-key.sh
+    ${DIR}/generate-ssh-key.sh
 fi
 
 echo -e "\n\nEnter the git repository URL. \nThis will be used to clone the repository to the server.\n"
@@ -38,7 +39,7 @@ done
 
 echo -e "\n\n Please follow the following prompts to create a php website. Then we will continue with laravel setup.\n"
 
-./setup-php-site.sh
+${DIR}/setup-php-site.sh
 
 echo -e "\n\n Now continuing with laravel setup.\n"
 
