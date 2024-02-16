@@ -6,7 +6,8 @@ while [ "$confirm_php_version" = "n" ]; do
     read -p "Enter the PHP version you want to install (e.g., 8.1): " php_version
     
     # Verify PHP version with the user
-    read -p "You have selected PHP version $php_version. This will install the package php${php_version}-fpm, php${php_version}-cli php-mysql. Are you sure? (y/n/skip): " confirm_php_version
+    read -p "You have selected PHP version $php_version. This will install the package php${php_version}-fpm, php${php_version}-cli php-mysql. Are you sure? (Y/n/skip): " confirm_php_version
+    configm_php_version=${confirm_php_version:-y}
     
     if [ "$confirm_php_version" = "y" ]; then
         sudo add-apt-repository ppa:ondrej/php
