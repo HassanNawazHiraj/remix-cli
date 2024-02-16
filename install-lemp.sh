@@ -1,4 +1,5 @@
-read -p "Do you want to setup LEMP (Linux Nginx Mysql PHP) stack? (y/n): " setup_lemp
+read -p "Do you want to setup LEMP (Linux Nginx Mysql PHP) stack? (Y/n): " setup_lemp
+setup_lemp=${setup_lemp:-y}
 
 if [ "$setup_lemp" = "y" ]; then
     # Install Nginx

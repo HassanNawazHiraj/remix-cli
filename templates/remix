@@ -9,6 +9,7 @@ shift
 
 # Run the command
 # Check if the command includes the .sh extension
+cd $DIR
 if [[ $CMD == *.sh ]]
 then
     # If it does, run the command without adding .sh
