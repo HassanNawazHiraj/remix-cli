@@ -2,17 +2,19 @@ read -p "Do you want to setup LEMP (Linux Nginx Mysql PHP) stack? (Y/n): " setup
 setup_lemp=${setup_lemp:-y}
 
 if [ "$setup_lemp" = "y" ]; then
+    DIR="$(dirname "$0")"
+    
     # Install Nginx
-    ./install-nginx.sh
+    bash "${DIR}/install-nginx.sh"
     
     # Install MySQL
-    ./install-mysql.sh
+    bash "${DIR}/install-mysql.sh"
     
     # Install PHP
-    ./install-php.sh
-
+    bash "${DIR}/install-php.sh"
+    
     # install composer
-    ./install-composer.sh
+    bash "${DIR}/install-composer.sh"
     
     echo "LEMP stack setup complete. Recommended to reboot the server."
 fi
