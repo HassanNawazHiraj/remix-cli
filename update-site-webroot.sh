@@ -23,8 +23,8 @@ echo -e "The webroot path will be changed to /var/www/$site_name$webroot_path \n
 read -p "Do you want to continue? (Y/n): " continue_script
 continue_script=${continue_script:-y}
 
-if [ "$continue_script" != "Y" ]; then
-    echo "Exiting..."
+if [ "$continue_script" != "y" ]; then
+    echo "Updating site webroot path cancelled."
     exit 1
 fi
 
