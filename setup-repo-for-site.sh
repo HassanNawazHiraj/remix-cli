@@ -9,15 +9,15 @@ read -p "Do you want to continue? (Y/n): " continue_script
 continue_script=${continue_script:-y}
 
 # ask user if they want to generate ssh key
-echo -e "Please make sure you have a git repository created and the ssh key added to your git account. \n"
-echo -e "You can generate new key for each git respository and add it to deploy keys of that git \n"
-read -p "Do you want to generate an SSH key now? (Y/n): " generate_ssh
-generate_ssh=${generate_ssh:-y}
+# echo -e "Please make sure you have a git repository created and the ssh key added to your git account. \n"
+# echo -e "You can generate new key for each git respository and add it to deploy keys of that git \n"
+# read -p "Do you want to generate an SSH key now? (Y/n): " generate_ssh
+# generate_ssh=${generate_ssh:-y}
 
-if [ "$generate_ssh" = "y" ]; then
-    # generate ssh key
-    ${DIR}/generate-ssh-key.sh
-fi
+# if [ "$generate_ssh" = "y" ]; then
+#     # generate ssh key
+#     ${DIR}/generate-ssh-key.sh
+# fi
 
 echo -e "\n\nEnter the git repository URL. \nThis will be used to clone the repository to the server.\n"
 
