@@ -29,3 +29,14 @@ for package in "${packages[@]}"; do
         fi
     fi
 done
+
+# Enable the extensions
+for package in "${packages[@]}"; do
+    if ! php -m | grep -q "^${package}$"; then
+        echo "Extension ${package} is not enabled, enabling"
+        echo "extension=${package}.so" | sudo tee -a /etc/php/${php_version}/cli/php.ini
+    fi
+done
+
+# Restart the PHP service to apply changes
+sudo service php${php_version}-fpm restart
