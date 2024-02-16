@@ -23,6 +23,9 @@ else
     # Now we will copy the public key to the new user's home directory using rsync
     rsync --archive --chown="$username":"$username" ~/.ssh /home/"$username"
 
+    # crate /var/www directory if it doesn't exist
+    sudo mkdir -p /var/www
+
     # permission for /var/www
     sudo chown -R "$username":"$username" /var/www
     sudo chown -R "$username":"$username" /home/"$username"
