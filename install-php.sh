@@ -19,6 +19,8 @@ done
 
 sudo update-alternatives --set php /usr/bin/php${php_version}
 
+echo -e "\n\nPHP $php_version installed. PHP version switched to $php_version.\n\n"
+
 
 
 # Ask user if they want to configure Nginx to use PHP

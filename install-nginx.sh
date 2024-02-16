@@ -2,7 +2,8 @@
 sudo apt install nginx -y
 
 # ask user if they want to enable just http firewall rule or both http and https
-read -p "Do you want to enable just http firewall rule or both http and https? (http/https): " http_or_https
+read -p "Do you want to enable just http firewall rule or both http and https? (http/HTTPS): " http_or_https
+http_or_https=${http_or_https:-https}
 if [ "$http_or_https" = "http" ]; then
     # Allow Nginx HTTP
     sudo ufw allow 'Nginx HTTP'
