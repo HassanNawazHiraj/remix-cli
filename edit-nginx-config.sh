@@ -13,4 +13,4 @@ if [ ! -f /etc/nginx/sites-available/$project_name ]; then
 fi
 
 
-cat /etc/nginx/sites-available/$site_name
+nano /etc/nginx/sites-available/$site_name
