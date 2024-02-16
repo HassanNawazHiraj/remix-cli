@@ -6,7 +6,7 @@ source ${DIR}/functions.sh
 php_version=$(select_php_version)
 
 # List of required PHP packages
-packages=(bcmath curl json mbstring mysql tokenizer xml zip opcache pdo calendar ctype exif ffi fileinfo ftp gettext iconv phar posix readline shmop sockets sysvmsg sysvsem sysvshm)
+packages=(bcmath curl json mbstring mysql tokenizer xml zip opcache pdo calendar ctype exif ffi fileinfo ftp gettext iconv phar posix readline shmop sockets sysvmsg sysvsem sysvshm dom)
 
 # Loop over each package
 for package in "${packages[@]}"; do
