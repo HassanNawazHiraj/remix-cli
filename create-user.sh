@@ -25,6 +25,7 @@ else
 
     # permission for /var/www
     sudo chown -R "$username":"$username" /var/www
+    sudo chown -R "$username":"$username" /home/"$username"
     
     echo "User '$username' has been set up. You should be able to login using your SSH key (same as root)."
 fi
