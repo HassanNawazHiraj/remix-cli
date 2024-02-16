@@ -1,20 +1,7 @@
 #!/bin/bash
 DIR="$(dirname "$0")"
 
-# Check if the /etc/php directory exists and is not empty
-if [ ! -d "/etc/php" ] || [ -z "$(ls -A /etc/php)" ]; then
-    echo "The /etc/php directory doesn't exist or is empty. Please install PHP before running this script."
-    exit 1
-fi
-
-# check if mysql is installed
-if ! [ -x "$(command -v mysql)" ]; then
-    echo "MySQL is not installed. Please install MySQL before running this script."
-    exit 1
-fi
-
 # ask user if they want to generate ssh key
-echo -e "Currently we only support deploying laravel using git. \n"
 echo -e "Please make sure you have a git repository created and the ssh key added to your git account. \n"
 echo -e "You can generate new key for each git respository and add it to deploy keys of that git \n"
 read -p "Do you want to generate an SSH key now? (Y/n): " generate_ssh
@@ -37,11 +24,8 @@ while true; do
     fi
 done
 
-echo -e "\n\n Please follow the following prompts to create a php website. Then we will continue with laravel setup.\n"
-
-source "${DIR}/setup-php-site.sh"
-
-echo -e "\n\n Now continuing with laravel setup.\n"
+# Ask user for the site name
+read -p "Enter the site name from /var/www/site_name (e.g., example.com): " site_name
 
 # clone the repository into /var/www/$site_name
 sudo git clone $git_repo /var/www/$site_name
