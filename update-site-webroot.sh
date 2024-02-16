@@ -8,6 +8,8 @@ if [ ! -f /etc/nginx/sites-available/$project_name ]; then
     echo "Not in project folder"
     # ask user to enter site name
     read -p "Enter the nginx site name. " site_name
+    else
+    site_name=$project_name
 fi
 
 # enter new webroot path
