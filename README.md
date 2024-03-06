@@ -28,5 +28,6 @@ Cert bot is used to generate Lets encrypt SSLs
 I made this cli to make setting up server easier. This cli is combination of bash script which makes it easy to read and understand whats going on. This makes modifying the cli for your own preference easy.
 
 # Todo
-[] enable-nginx-site
-[] disable-nginx-site
+- [ ] enable-nginx-site
+
+- [ ] disable-nginx-site
